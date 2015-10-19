@@ -1,4 +1,4 @@
-/*! angular-stepper - v0.0.3 - 2015-10-06
+/*! angular-stepper - v0.1.1 - 2015-10-19
 * Copyright (c) Julien Bouquillon [revolunet] 2015; Licensed  */
 (function () {
 
@@ -15,9 +15,9 @@
                     max: '=',
                     ngModel: '='
                 },
-                template: '<button type="button" ng-disabled="!canBeDecremented()" ng-click="decrement()">-</button>' +
+                template: '<button type="button" class="btn-minus" ng-disabled="!canBeDecremented()" ng-click="decrement()">-</button>' +
                 '<input type="text" ng-model="ngModel">' +
-                '<button type="button" ng-disabled="!canBeIncremented()" ng-click="increment()">+</button>',
+                '<button type="button" class="btn-plus" ng-disabled="!canBeIncremented()" ng-click="increment()">+</button>',
                 link: function (scope, iElement, iAttrs, ngModelController) {
 
                     // when model change, cast to integer
