@@ -33,12 +33,12 @@
 
                     scope.canBeIncremented = function () {
                         var val = ngModelController.$viewValue;
-                        return val && !isNaN(val) && !isUnderMin(val, true) && !isOverMax(val);
+                        return (typeof(val) === 'number') && !isUnderMin(val, true) && !isOverMax(val);
                     };
 
                     scope.canBeDecremented = function () {
                         var val = ngModelController.$viewValue;
-                        return val && !isNaN(val) && !isUnderMin(val) && !isOverMax(val, true);
+                        return (typeof(val) === 'number') && !isUnderMin(val) && !isOverMax(val, true);
                     };
 
                     scope.increment = function () {
@@ -64,7 +64,7 @@
                     }
 
                     function updateModel(offset) {
-                        if (!ngModelController.$viewValue) {
+                        if (!(typeof(ngModelController.$viewValue) === 'number')) {
                             return;
                         }
                         // update the model, call $parsers pipeline...
