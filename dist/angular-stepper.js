@@ -1,4 +1,4 @@
-/*! angular-stepper - v0.1.1 - 2015-10-19
+/*! angular-stepper - v0.1.1 - 2015-12-10
 * Copyright (c) Julien Bouquillon [revolunet] 2015; Licensed  */
 (function () {
 
@@ -13,10 +13,11 @@
                 scope: {
                     min: '=',
                     max: '=',
-                    ngModel: '='
+                    ngModel: '=',
+                    stepperName: '=',
                 },
                 template: '<button type="button" class="btn-minus" ng-disabled="!canBeDecremented()" ng-click="decrement()">-</button>' +
-                '<input type="text" ng-model="ngModel">' +
+                '<input id="{{stepperName}}" name="{{stepperName}}" type="text" ng-model="ngModel">' +
                 '<button type="button" class="btn-plus" ng-disabled="!canBeIncremented()" ng-click="increment()">+</button>',
                 link: function (scope, iElement, iAttrs, ngModelController) {
 
@@ -30,17 +31,19 @@
 
                     // watch out min/max and recheck validity when they change
                     scope.$watch('min+max', function () {
-                        ngModelController.$$parseAndValidate();
+                        if (ngModelController.$viewValue) {
+                            ngModelController.$$parseAndValidate();
+                        }
                     });
 
                     scope.canBeIncremented = function () {
                         var val = ngModelController.$viewValue;
-                        return val && !isNaN(val) && !isUnderMin(val, true) && !isOverMax(val);
+                        return (typeof(val) === 'number') && !isUnderMin(val, true) && !isOverMax(val);
                     };
 
                     scope.canBeDecremented = function () {
                         var val = ngModelController.$viewValue;
-                        return val && !isNaN(val) && !isUnderMin(val) && !isOverMax(val, true);
+                        return (typeof(val) === 'number') && !isUnderMin(val) && !isOverMax(val, true);
                     };
 
                     scope.increment = function () {
@@ -51,22 +54,22 @@
                         updateModel(-1);
                     };
 
-                    function formatValue(value) {
-                        if (isNaN(value)) {
+                    function formatValue(val) {
+                        if (isNaN(val)) {
                             ngModelController.$setValidity('outOfBounds', false);
                             return null;
                         }
-                        return +value;
+                        return +val;
                     }
 
                     function isOutOfBounds() {
-                        var value = ngModelController.$viewValue;
-                        var valid = !(isNaN(value) || isUnderMin(value, true) || isOverMax(value, true));
+                        var val = ngModelController.$viewValue;
+                        var valid = (typeof(val) === 'number') && !isUnderMin(val, true) && !isOverMax(val, true);
                         return valid;
                     }
 
                     function updateModel(offset) {
-                        if (!ngModelController.$viewValue) {
+                        if (!(typeof(ngModelController.$viewValue) === 'number')) {
                             return;
                         }
                         // update the model, call $parsers pipeline...
