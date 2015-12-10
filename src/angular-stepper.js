@@ -52,17 +52,17 @@
                         updateModel(-1);
                     };
 
-                    function formatValue(value) {
-                        if (isNaN(value)) {
+                    function formatValue(val) {
+                        if (isNaN(val)) {
                             ngModelController.$setValidity('outOfBounds', false);
                             return null;
                         }
-                        return +value;
+                        return +val;
                     }
 
                     function isOutOfBounds() {
-                        var value = ngModelController.$viewValue;
-                        var valid = (typeof(value) === 'number') && !isUnderMin(value, true) && !isOverMax(value, true);
+                        var val = ngModelController.$viewValue;
+                        var valid = (typeof(val) === 'number') && !isUnderMin(val, true) && !isOverMax(val, true);
                         return valid;
                     }
 
