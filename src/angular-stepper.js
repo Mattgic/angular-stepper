@@ -11,10 +11,11 @@
                 scope: {
                     min: '=',
                     max: '=',
-                    ngModel: '='
+                    ngModel: '=',
+                    stepperName: '=',
                 },
                 template: '<button type="button" class="btn-minus" ng-disabled="!canBeDecremented()" ng-click="decrement()">-</button>' +
-                '<input type="text" ng-model="ngModel">' +
+                '<input id="{{stepperName}}" name="{{stepperName}}" type="text" ng-model="ngModel">' +
                 '<button type="button" class="btn-plus" ng-disabled="!canBeIncremented()" ng-click="increment()">+</button>',
                 link: function (scope, iElement, iAttrs, ngModelController) {
 
