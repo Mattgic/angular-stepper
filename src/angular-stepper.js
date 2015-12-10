@@ -29,7 +29,9 @@
 
                     // watch out min/max and recheck validity when they change
                     scope.$watch('min+max', function () {
-                        ngModelController.$$parseAndValidate();
+                        if (ngModelController.$viewValue) {
+                            ngModelController.$$parseAndValidate();
+                        }
                     });
 
                     scope.canBeIncremented = function () {
