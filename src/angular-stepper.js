@@ -62,7 +62,7 @@
 
                     function isOutOfBounds() {
                         var value = ngModelController.$viewValue;
-                        var valid = !(isNaN(value) || isUnderMin(value, true) || isOverMax(value, true));
+                        var valid = (typeof(value) === 'number') && !isUnderMin(value, true) && !isOverMax(value, true);
                         return valid;
                     }
 
