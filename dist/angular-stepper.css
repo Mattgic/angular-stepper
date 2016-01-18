@@ -47,4 +47,10 @@ div[rn-stepper] input {
   box-sizing: border-box;
 }
 
+div[rn-stepper] input[type=number]::-webkit-inner-spin-button,
+div[rn-stepper] input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /*# sourceMappingURL=angular-stepper.css.map */

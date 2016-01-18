@@ -1,0 +1,40 @@
+div[rn-stepper] {
+  box-sizing: border-box;
+  border: 1px solid #bbb;
+  display: inline-block;
+  height: 42px; }
+  div[rn-stepper].ng-invalid-out-of-bounds input {
+    color: #FF3B34;
+    border: 3px solid #FF3B34; }
+  div[rn-stepper] button {
+    box-sizing: border-box;
+    appearance: none;
+    margin: 0;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    background: #4D4DFF;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    outline: none; }
+    div[rn-stepper] button[disabled] {
+      opacity: 0.3; }
+    div[rn-stepper] button:active {
+      box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
+      background: #3434ff; }
+  div[rn-stepper] input {
+    vertical-align: top;
+    padding: 0;
+    background: #eee;
+    text-align: center;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box; }
+  div[rn-stepper] input[type=number]::-webkit-inner-spin-button,
+  div[rn-stepper] input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+
+/*# sourceMappingURL=angular-stepper.css.map */

@@ -1,5 +1,5 @@
-/*! angular-stepper - v0.1.1 - 2015-12-10
-* Copyright (c) Julien Bouquillon [revolunet] 2015; Licensed  */
+/*! angular-stepper - v0.1.3 - 2016-01-18
+* Copyright (c) Julien Bouquillon [revolunet] 2016; Licensed  */
 (function () {
 
     'use strict';
@@ -17,7 +17,7 @@
                     stepperName: '=',
                 },
                 template: '<button type="button" class="btn-minus" ng-disabled="!canBeDecremented()" ng-click="decrement()">-</button>' +
-                '<input id="{{stepperName}}" name="{{stepperName}}" type="text" ng-model="ngModel">' +
+                '<input id="{{stepperName}}" name="{{stepperName}}" type="number" ng-model="ngModel">' +
                 '<button type="button" class="btn-plus" ng-disabled="!canBeIncremented()" ng-click="increment()">+</button>',
                 link: function (scope, iElement, iAttrs, ngModelController) {
 
